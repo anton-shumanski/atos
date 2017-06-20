@@ -69,7 +69,7 @@ configs
 
   You can get all app configurations with next code:
 ```markdownd
-hermes.app.get('config')
+atos.app.get('config')
 ```
 or if you have access to request object, you can get the config in this way:
 ```markdownd
@@ -77,18 +77,18 @@ req.app.get('config')
 ```
   There are few useful built in variables:
 ```markdownd
-hermes.app.get('rootPath')     - return the path to your app
-hermes.app.get('sourcePath')   - return the path to the source code(it can be path to src folder in dev mode or to src-es5 folder in prod mode)
-hermes.app.get('isProduction') - return true/false if the app is run in prod or in dev mode
-hermes.app.get('isSilentMode') - return true/false if app is run in silent mode
+atos.app.get('rootPath')     - return the path to your app
+atos.app.get('sourcePath')   - return the path to the source code(it can be path to src folder in dev mode or to src-es5 folder in prod mode)
+atos.app.get('isProduction') - return true/false if the app is run in prod or in dev mode
+atos.app.get('isSilentMode') - return true/false if app is run in silent mode
 ```
   If you need to access some property (e.g.`exampleProperty`) in the `default.json` file in the main `configs` folder, type the following code:
 ```markdownd
-hermes.app.get('config').exampleProperty
+atos.app.get('config').exampleProperty
 ```
 but if you need to access some property in the `database.json` file you should do it as follows:
 ```markdownd
-hermes.app.get('config').database.exampleProperty
+atos.app.get('config').database.exampleProperty
 ```
 
 ## Request
