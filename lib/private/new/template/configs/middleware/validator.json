@@ -1,0 +1,5 @@
+{
+    "IndexController": {
+        "postLogin": ["LoginValidator"]
+    }
+}

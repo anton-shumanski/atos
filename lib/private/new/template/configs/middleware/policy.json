@@ -1,0 +1,14 @@
+{
+    "*": ["IsLoggedIn"],
+    "IndexController": {
+        "getIndex": ["!IsLoggedIn"],
+        "getLogin": ["!IsLoggedIn"],
+        "postLogin": ["!IsLoggedIn"]
+    },
+    "404Controller": {
+        "getIndex": ["!IsLoggedIn"]
+    },
+    "500Controller": {
+        "getIndex": ["!IsLoggedIn"]
+    }
+}

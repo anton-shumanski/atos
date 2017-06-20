@@ -1,0 +1,7 @@
+{
+  "sessionData": {
+    "secret": "electricity",
+    "resave": false,
+    "saveUninitialized": false
+  }
+}

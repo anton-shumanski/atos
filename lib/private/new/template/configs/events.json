@@ -1,0 +1,8 @@
+{
+  "before-router": [
+    "Passport"
+  ],
+  "loaded": [
+    "SayHello"
+  ]
+}

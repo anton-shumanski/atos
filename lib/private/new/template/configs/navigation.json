@@ -1,0 +1,28 @@
+{
+  "mainNav": [
+    {
+      "uri": "/",
+      "label": "Home"
+    },
+    {
+      "uri": "/login",
+      "label": "Sign in"
+    },
+    {
+      "uri": "#",
+      "label": "Other",
+      "submenu": [
+        {
+          "uri": "#",
+          "label": "Submenu 1"
+        },
+        {
+          "uri": "#",
+          "label": "Submenu 2"
+        }
+      ]
+    }
+
+
+  ]
+}

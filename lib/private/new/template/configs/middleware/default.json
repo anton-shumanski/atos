@@ -1,0 +1,11 @@
+{
+	"beforePolicies": {
+
+	},
+	"afterValidators": {
+		"*": ["ViewDecorator"],
+		"IndexController": {
+			"postLogin": ["Authenticate"]
+		}
+	}
+}

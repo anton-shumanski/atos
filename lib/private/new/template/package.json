@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "version": "1.0.0",
+  "description": "Atos application",
+  "keywords": [],
+  "dependencies": {
+    "atos": "^1.0.0"
+  },
+  "scripts": {
+    "start": "babel-node ./bin/www",
+    "compile": "babel --presets es2015 -d src-es5/ src/",
+    "prepublish": "npm run compile"
+  },
+  "main": "app.js"
+}
