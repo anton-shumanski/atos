@@ -1,6 +1,6 @@
 {
     "main": {
-        "database": "goodknight",
+        "database": "test",
         "username": "root",
         "password": "",
         "config": {
