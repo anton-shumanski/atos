@@ -1,0 +1,11 @@
+{
+  "sessionData": {
+    "secret": "atos-framework",
+    "resave": false,
+    "saveUninitialized": false,
+    "store": {
+      "type": "redis",
+      "connection": "session-redis"
+    }
+  }
+}

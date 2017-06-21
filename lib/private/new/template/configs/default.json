@@ -2,10 +2,6 @@
   "sessionData": {
     "secret": "electricity",
     "resave": false,
-    "saveUninitialized": false,
-    "store": {
-      "type": "redis",
-      "connection": "session-redis"
-    }
+    "saveUninitialized": false
   }
 }
