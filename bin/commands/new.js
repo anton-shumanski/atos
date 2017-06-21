@@ -11,26 +11,30 @@ module.exports = function (path, options) {
         errorOnExist: true
     };
 
-    fsExtra.copy(__dirname+'/../../lib/private/new/template', path, defaults, err => {
-            if (err) {
-                return console.error(err);
-            }
-        process.chdir(path);
-        npm.load(
-            function(err) {
-            // handle errors
+    fsExtra.copy(__dirname+'/../../lib-es5/private/new/template', path, defaults).then(() => {
+            process.chdir(path);
+            npm.load(
+                function(err) {
+                    // handle errors
 
-            // install module ffi
-            npm.commands.install(['.'], function(er, data) {
-                console.error(er);
-            });
+                    // install module ffi
+                    npm.commands.install(['.'], function(er, data) {
+                        if (er) {
+                            return console.error(er);
+                        }
 
-            npm.on('log', function(message) {
-                // log installation progress
-                console.log(message);
-            });
-        });
-            console.log("Atos project is created successfully!");
-        });
+                        console.log("");
+                        console.log("Atos project is created successfully!");
+                    });
+
+                    npm.on('log', function(message) {
+                        // log installation progress
+                        console.log(message);
+                    });
+                });
+
+        }).catch(err => {
+            console.error(err)
+        })
 
 };

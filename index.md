@@ -11,7 +11,7 @@ npm install atos -g
 ## How to create your app
 
 ```markdownd
-atos new myApp
+atos-cli new myApp
 ```
 If already existed files should be overwritten, there is an additional parameter which must be used - `--overwrite`
 
@@ -20,10 +20,13 @@ If already existed files should be overwritten, there is an additional parameter
 On development server:
 ```markdownd
 cd myApp
+
 atos-dev-server run
 ```
 On production server:
 ```markdownd
+cd myApp
+
 atos-prod-server run
 ```
 `atos-prod-server` command uses already compiled code to ES5 while `atos-dev-server` uses babel to interprete ES6

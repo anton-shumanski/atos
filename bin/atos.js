@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const program = require('../lib/private/patched-commander');
+const program = require('../lib-es5/private/patched-commander');
 const packageJson = require('../package.json');
 const _ = require('lodash');
 

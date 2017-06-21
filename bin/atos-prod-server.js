@@ -1,10 +1,11 @@
 #!/usr/bin/env node
-const program = require('../lib/private/patched-commander');
+const program = require('../lib-es5/private/patched-commander');
 
-let cmd;
+var cmd;
 // $ atos run
 cmd = program.command('run');
 cmd.option('--port');
+cmd.option('--silent');
 cmd.action(require('./commands/server')('production'));
 
 program.initHelp();

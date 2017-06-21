@@ -1,10 +1,7 @@
 {
-  "name": "electro-express",
-  "description": "",
+  "name": "Atos",
+  "description": "Atos Skeleton Application",
   "main": "",
-  "authors": [
-    "anton.shumanski <a.shumansky@gmail.com>"
-  ],
   "license": "MIT",
   "homepage": "",
   "dependencies": {

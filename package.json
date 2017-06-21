@@ -48,7 +48,7 @@
   },
   "main": "./lib-es5/Atos.js",
   "scripts": {
-    "compile": "babel --presets es2015 -d lib-es5/ lib/",
+    "compile": "babel --presets es2015 -d lib-es5/ lib/ && cp -Rf ./lib/private/new/template ./lib-es5/private/new",
     "prepublish": "npm run compile"
   },
   "devDependencies": {
