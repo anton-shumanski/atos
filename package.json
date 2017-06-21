@@ -4,20 +4,21 @@
   "description": "NodeJs framework based on Express and supports ES6",
   "homepage": "https://anton-shumanski.github.io/atos/",
   "keywords": [
-    "ddd",
     "web-framework",
     "express",
     "atos",
     "nodeJs",
     "ES6",
-    "orm"
+    "orm",
+    "common client and server side validation",
+    "ddd"
   ],
   "repository": {
     "type": "git",
     "url": "git@github.com:anton-shumanski/atos.git"
   },
   "license": "MIT",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "dependencies": {
     "body-parser": "~1.17.1",
     "commander": "^2.9.0",
