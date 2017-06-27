@@ -96,17 +96,137 @@ atos.app.get('config').database.exampleProperty
 
 ## Request
 
+Request objects is the same like request object in Express. There is some extra data appended to the request. The data is:
+```markdownd
+req.target.controller -> name of called controller
+req.target.action     -> name of called action
+req.wantsJson         -> if request wants response in json format
+```
+
 ## Response
+
+Response object is the same like request object in Express.
+
+I added some default responses like `badRequest`, `forbidden`, `notFound`, `serverError` which can be send to the client.
+You can see them at myApp/src/responses folder.
+
+If you want to add some extra responses you can do that just by adding a new file at `responses` folder and the response will be automatically
+loaded. The filename is equal to the method which you should call from response object.
+For example if you add file `ok.js` in responses folder you can call it by `res.ok()`
 
 ## Routes
 
-## Controller
+The main router class is myApp/src/routes/Router.js
+In the `load` method you can define the main route for every controller, for example:
+```markdownd
+this.app.use('/account', account(this.app, this.middleware));
+```
+So for route `/account` we call method `account` where we describe all sub-routes for controller `AccountController`
+Method `account` is defined in separate file in the same folder. The file name is `account.js`
+For example in the file `account.js` we have:
+```markdownd
+const router = express.Router();
+
+module.exports = function index(app, middleware) {
+  router.route('/account/profile').get(...middleware.load('AccountController.getProfile'));
+  return router;
+};
+
+```
+
+Good practise is for `GET` http requests to use prefix `get` for method like `getProfile` and the same logic for `POST` http requests.
+
+## Controllers
+
+Controllers are responsible for responding to requests. They should not contain the bulk of your project’s business logic. Project’s business logic should be in `domain` folder.
+Controllers are defined at `myApp/src/controllers` folder.
+
+Good practise is the filenames to have suffix `Controller` (e.g. `AccountController`)
+
+The controller it looks like that:
+```markdownd
+module.exports = {
+    getIndex: function(req, res, next) {
+        res.render('account/index');
+    },
+
+    getProfile:  function(req, res){
+        res.render('account/profile', { user: req.user });
+    }
+}
+```
 
 ## Models & ORM
 
+Atos framework use <a href="http://docs.sequelizejs.com/">Sequelize</a> ORM. You can read how to use it <a href="http://docs.sequelizejs.com/">here</a>.
+Atos framework also supports multiple database connections.
+You can add your db configurations at (development/production)/database.json
+Next step is to create file at `myApp/src/models/db/` The key thing is that the filename should be equal to the key which you set in `database.json`
+
+The database.json can looks as follows:
+```markdownd
+{
+    "main": {
+        "database": "test",
+        "username": "root",
+        "password": "",
+        "config": {
+            "host": "localhost",
+            "dialect": "mysql",
+
+            "pool": {
+                "max": 5,
+                "min": 0,
+                "idle": 10000
+            }
+        }
+    }
+}
+```
+In our case the filename in `myApp/src/models/db/` should be `main.js` and it looks as follows:
+```markdownd
+const modelPath = atos.app.get('sourcePath')+'models/';
+const db = new atos.dbConnection(__filename, modelPath);
+
+module.exports = function () {
+    return db.connect();
+}
+```
+So you can use db connection in the next way:
+```markdownd
+import models from '....../models/db/main'
+
+models().User.findOne({
+            where: {
+                email: 'test-email',
+            }
+        }).then(user => {
+            if (!user) {
+                return console.log('Cannot find user')
+            }
+
+            return user;
+        }).catch(err => {
+            return cb(err);
+        });
+```
+
 ## Views
 
+For views the framework uses EJS and `express-ejs-layouts` module for layouts.
+You can see how to use ejs <a href="http://www.embeddedjs.com/">here</a>
+Files related to the view are located at `myApp/views`
 ## Frontend javascript
+
+If you want to add specific js file to any view you can append next code to view file:
+```markdownd
+<script src="/js/paht_to_your_view_file.js"></script>
+```
+The script will be appended before end of a `</body>` tag
+
+Atos Framework has mechanism for loading specific js file for every action
+For example if you make request to '/account/profile' and the controller is `myApp/src/controllers/AccountController` and the method is `getProfile`
+the js which will be loaded automatically if exists is `/public/js/actions/account/AccountProfile.js
 
 ## Middleware
 --middleware, policy, validation
