@@ -226,7 +226,7 @@ The script will be appended before end of a `</body>` tag
 
 Atos Framework has mechanism for loading specific js file for every action
 For example if you make request to '/account/profile' and the controller is `myApp/src/controllers/AccountController` and the method is `getProfile`
-the js which will be loaded automatically if exists is `/public/js/actions/account/AccountProfile.js
+the js which will be loaded automatically if exists is `/public/js/actions/account/AccountProfile.js`
 
 ## Middleware
 --middleware, policy, validation
